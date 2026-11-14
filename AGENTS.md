@@ -28,3 +28,7 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- Patient-portal domain logic (catalogue, clinical advisor, ref lookup) lives in `src/lib/adaptfit.ts` with tests beside it — keeps rules testable apart from UI.
+- Orders are stored in browser localStorage via `src/lib/order-store.ts` (demo only, no backend yet); read it only inside effects to avoid hydration mismatches.
