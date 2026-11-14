@@ -64,7 +64,7 @@ function Intake() {
   const [f, setF] = useState<Form>({
     firstName: "", lastName: "", email: "", phone: "",
     conditions: [], comfort: [], notes: "",
-    garment: "shirt", fabricId: FABRICS[0].id, urgency: "standard", targetDate: "",
+    garment: "shirt", fabricId: "organic-cotton", urgency: "standard", targetDate: "",
     measureAtClinic: false, m: EMPTY_M,
   });
   const set = <K extends keyof Form>(k: K, v: Form[K]) => setF((p) => ({ ...p, [k]: v }));

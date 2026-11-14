@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/track/$token")({
   validateSearch: (s: Record<string, unknown>): { welcome?: number } =>
-    s.welcome ? { welcome: Number(s.welcome) } : {},
+    s["welcome"] ? { welcome: Number(s["welcome"]) } : {},
   head: () => ({
     meta: [
       { title: "Your order — AdaptFit" },
@@ -74,7 +74,7 @@ function TrackDetail() {
         <section className="rounded-[1.75rem] border bg-card p-6 shadow-card md:p-10" aria-labelledby="order-title">
           <div className="mb-8 flex flex-col justify-between gap-6 md:flex-row md:items-start">
             <div className="space-y-2">
-              <p className="eyebrow">{STAGES[order.stage].label}</p>
+              <p className="eyebrow">{STAGES[order.stage]?.label}</p>
               <h1 id="order-title" className="text-4xl font-medium">{garmentLabel(order.garment)}</h1>
               <p className="flex items-center gap-2 text-muted-foreground">
                 <Swatch tone={fabric.swatch} className="size-5" /> {fabric.name}

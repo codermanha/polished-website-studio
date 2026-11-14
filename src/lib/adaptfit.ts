@@ -88,7 +88,7 @@ export type Zone = "placket" | "port" | "seams" | "sleeve" | "back" | "asym";
 
 export type Accommodation = { id: string; name: string; description: string; zone: Zone };
 
-export const ACCOMMODATIONS: Record<string, Accommodation> = {
+export const ACCOMMODATIONS = {
   magnetic_placket: {
     id: "magnetic_placket",
     name: "Magnetic Placket",
@@ -125,7 +125,7 @@ export const ACCOMMODATIONS: Record<string, Accommodation> = {
     description: "Sleeve opens along the shoulder so arms never need to lift overhead.",
     zone: "sleeve",
   },
-};
+} satisfies Record<string, Accommodation>;
 
 export type Measurements = {
   shoulderL?: number;
@@ -196,7 +196,7 @@ export type PatientOrder = {
   accommodations: Accommodation[];
   measureAtClinic: boolean;
   urgency: "standard" | "priority";
-  targetDate?: string;
+  targetDate?: string | undefined;
   createdAt: string;
   updates: ClinicUpdate[];
   feedback: { date: string; message: string; satisfied?: boolean }[];
@@ -240,7 +240,7 @@ export function findOrderByRefs(
 }
 
 export function fabricById(id: string): Fabric {
-  return FABRICS.find((f) => f.id === id) ?? FABRICS[0];
+  return FABRICS.find((f) => f.id === id) ?? (FABRICS[0] as Fabric);
 }
 
 export function garmentLabel(id: GarmentId): string {
